@@ -1,0 +1,32 @@
+@import url(./_type/popup__close-icon_type_profile.css);
+@import url(./_type/popup__close-icon_type_cards.css);
+.popup__close-icon {
+  width: 40px;
+  height: 40px;
+  background-image: url(../../../images/profile-add.svg);
+  background-color: transparent;
+  background-size: cover;
+  border: none;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  transform: rotate(45deg);
+  position: fixed;
+  right: calc((100% - 430px)/2 - 40px);
+  top: calc((100% - 330px)/2 - 40px);
+  padding: 0;
+}
+
+.popup__close-icon:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+  .popup__close-icon {
+    width: 30px;
+    height: 30px;
+    right: calc((100vw - 75vw)/2 - 30px);
+    top: calc((100% - 258px)/2 - 30px);
+  }
+}
