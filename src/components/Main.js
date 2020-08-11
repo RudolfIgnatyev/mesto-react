@@ -2,21 +2,34 @@ import React from 'react';
 import '../index.css';
 
 function Main() {
+
+  function handleEditAvatarClick() {
+    document.querySelector('.popup_type_avatar').classList.add('popup_opened');
+  }
+
+  function handleEditProfileClick() {
+    document.querySelector('.popup_type_profile').classList.add('popup_opened');
+  }
+
+  function handleAddPlaceClick() {
+    document.querySelector('.popup_type_cards').classList.add('popup_opened');
+  }
+
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__container">
           <div className="profile__area">
-            <button className="profile__avatar-edit-button" type="button" aria-label="Редактировать аватар">
+            <button className="profile__avatar-edit-button" type="button" aria-label="Редактировать аватар" onClick={handleEditAvatarClick}>
               <img className="profile__avatar" alt="Аватар пользователя" />
             </button>
             <div className="profile__info">
               <h1 className="profile__title" />
-              <button className="profile__edit-button" type="button" aria-label="Редактировать" />
+              <button className="profile__edit-button" type="button" aria-label="Редактировать" onClick={handleEditProfileClick} />
               <p className="profile__subtitle" />
             </div>
           </div>
-          <button className="profile__add-button" type="button" aria-label="Добавить" />
+          <button className="profile__add-button" type="button" aria-label="Добавить" onClick={handleAddPlaceClick} />
         </div>
       </section>
 
@@ -27,9 +40,9 @@ function Main() {
       <section className="popup popup_type_profile">
         <form className="popup__container popup__container_type_profile" name="popup__container_type_profile" action="#" method="POST">
           <h2 className="popup__title">Редактировать профиль</h2>
-          <input className="popup__field popup__field_el_name" type="text" name="popup__field_el_name" id="name-field" placeholder="Введите имя" required minlength="2" maxlength="40" />
+          <input className="popup__field popup__field_el_name" type="text" name="popup__field_el_name" id="name-field" placeholder="Имя" required minlength="2" maxlength="40" />
           <span className="popup__error" id="name-field-error" />
-          <input className="popup__field popup__field_el_profession" type="text" name="popup__field_el_profession" id="profession-field" placeholder="Введите профессию" required minlength="2" maxlength="200" />
+          <input className="popup__field popup__field_el_profession" type="text" name="popup__field_el_profession" id="profession-field" placeholder="Занятие" required minlength="2" maxlength="200" />
           <span className="popup__error" id="profession-field-error" />
           <button className="popup__save-button popup__save-button_type_profile" type="submit">Сохранить</button>
         </form>
