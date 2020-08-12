@@ -1,5 +1,6 @@
 import React from 'react';
 import '../index.css';
+import PopupWithForm from './PopupWithForm';
 
 function Main() {
 
@@ -37,39 +38,27 @@ function Main() {
         <ul className="cards-list" />
       </section>
 
-      <section className="popup popup_type_profile">
-        <form className="popup__container popup__container_type_profile" name="popup__container_type_profile" action="#" method="POST">
-          <h2 className="popup__title">Редактировать профиль</h2>
-          <input className="popup__field popup__field_el_name" type="text" name="popup__field_el_name" id="name-field" placeholder="Имя" required minlength="2" maxlength="40" />
-          <span className="popup__error" id="name-field-error" />
-          <input className="popup__field popup__field_el_profession" type="text" name="popup__field_el_profession" id="profession-field" placeholder="Занятие" required minlength="2" maxlength="200" />
-          <span className="popup__error" id="profession-field-error" />
-          <button className="popup__save-button popup__save-button_type_profile" type="submit">Сохранить</button>
-        </form>
-        <button className="popup__close-icon popup__close-icon_type_profile" type="button" aria-label="Закрыть" />
-      </section>
+      <PopupWithForm name="profile" title="Редактировать профиль">
+        <input className="popup__field popup__field_el_name" type="text" name="popup__field_el_name" id="name-field" placeholder="Имя" required minlength="2" maxlength="40" />
+        <span className="popup__error" id="name-field-error" />
+        <input className="popup__field popup__field_el_profession" type="text" name="popup__field_el_profession" id="profession-field" placeholder="Занятие" required minlength="2" maxlength="200" />
+        <span className="popup__error" id="profession-field-error" />
+        <button className="popup__save-button popup__save-button_type_profile" type="submit">Сохранить</button>
+      </PopupWithForm>
 
-      <section className="popup popup_type_cards">
-        <form className="popup__container popup__container_type_cards" name="popup__container_type_cards" action="#" method="POST">
-          <h2 className="popup__title">Новое место</h2>
-          <input className="popup__field popup__field_el_place" type="text" name="name" id="place-field" placeholder="Название" required minlength="1" maxlength="30" />
-          <span className="popup__error" id="place-field-error" />
-          <input className="popup__field popup__field_el_link" type="url" name="link" id="link-field" placeholder="Ссылка на картинку" required />
-          <span className="popup__error" id="link-field-error" />
-          <button className="popup__save-button popup__save-button_type_cards popup__save-button_disabled" type="submit">Создать</button>
-        </form>
-        <button className="popup__close-icon popup__close-icon_type_cards" type="button" aria-label="Закрыть" />
-      </section>
+      <PopupWithForm name="cards" title="Новое место">
+        <input className="popup__field popup__field_el_place" type="text" name="name" id="place-field" placeholder="Название" required minlength="1" maxlength="30" />
+        <span className="popup__error" id="place-field-error" />
+        <input className="popup__field popup__field_el_link" type="url" name="link" id="link-field" placeholder="Ссылка на картинку" required />
+        <span className="popup__error" id="link-field-error" />
+        <button className="popup__save-button popup__save-button_type_cards popup__save-button_disabled" type="submit">Создать</button>
+      </PopupWithForm>
 
-      <section className="popup popup_type_avatar">
-        <form className="popup__container popup__container_type_avatar" name="popup__container_type_avatar" action="#" method="POST">
-          <h2 className="popup__title popup__title_type_avatar">Обновить аватар</h2>
-          <input className="popup__field popup__field_el_avatar" type="url" name="avatar" id="avatar-field" placeholder="Ссылка на картинку" required />
-          <span className="popup__error" id="avatar-field-error" />
-          <button className="popup__save-button popup__save-button_type_avatar popup__save-button_disabled" type="submit">Сохранить</button>
-        </form>
-        <button className="popup__close-icon popup__close-icon_type_avatar" type="button" aria-label="Закрыть" />
-      </section>
+      <PopupWithForm name="avatar" title="Обновить аватар">
+        <input className="popup__field popup__field_el_avatar" type="url" name="avatar" id="avatar-field" placeholder="Ссылка на картинку" required />
+        <span className="popup__error" id="avatar-field-error" />
+        <button className="popup__save-button popup__save-button_type_avatar popup__save-button_disabled" type="submit">Сохранить</button>
+      </PopupWithForm>
 
       <section className="popup popup_type_images">
         <div className="popup__image-container">
@@ -79,15 +68,11 @@ function Main() {
         </div>
       </section>
 
-      <section className="popup popup_type_card-deletion">
-        <form className="popup__container popup__container_type_card-deletion" name="popup__container_type_card-deletion" action="#" method="POST">
-          <h2 className="popup__title popup__title_type_card-deletion">Вы уверены?</h2>
-          <button className="popup__save-button popup__save-button_type_card-deletion" type="submit">Да</button>
-        </form>
-        <button className="popup__close-icon popup__close-icon_type_card-deletion" type="button" aria-label="Закрыть" />
-      </section>
+      <PopupWithForm name="card-deletion" title="Вы уверены?">
+        <button className="popup__save-button popup__save-button_type_card-deletion" type="submit">Да</button>
+      </PopupWithForm>
     </main>
-  )
+  );
 }
 
 export default Main;
