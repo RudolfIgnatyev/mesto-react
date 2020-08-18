@@ -6,10 +6,10 @@ import PopupWithForm from './PopupWithForm';
 import Footer from './Footer';
 
 function App() {
+  // Определяем переменные внутреннего состояния
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
@@ -34,15 +34,15 @@ function App() {
       <Header />
       <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} />
       <PopupWithForm name="profile" title="Редактировать профиль" isOpen={isEditProfilePopupOpen ? true : false} onClose={closeAllPopups}>
-        <input className="popup__field popup__field_el_name" type="text" name="popup__field_el_name" id="name-field" placeholder="Имя" required minlength="2" maxlength="40" />
+        <input className="popup__field popup__field_el_name" type="text" name="popup__field_el_name" id="name-field" placeholder="Имя" required minLength="2" maxLength="40" />
         <span className="popup__error" id="name-field-error" />
-        <input className="popup__field popup__field_el_profession" type="text" name="popup__field_el_profession" id="profession-field" placeholder="Занятие" required minlength="2" maxlength="200" />
+        <input className="popup__field popup__field_el_profession" type="text" name="popup__field_el_profession" id="profession-field" placeholder="Занятие" required minLength="2" maxLength="200" />
         <span className="popup__error" id="profession-field-error" />
         <button className="popup__save-button popup__save-button_type_profile" type="submit">Сохранить</button>
       </PopupWithForm>
 
       <PopupWithForm name="cards" title="Новое место" isOpen={isAddPlacePopupOpen ? true : false} onClose={closeAllPopups}>
-        <input className="popup__field popup__field_el_place" type="text" name="name" id="place-field" placeholder="Название" required minlength="1" maxlength="30" />
+        <input className="popup__field popup__field_el_place" type="text" name="name" id="place-field" placeholder="Название" required minLength="1" maxLength="30" />
         <span className="popup__error" id="place-field-error" />
         <input className="popup__field popup__field_el_link" type="url" name="link" id="link-field" placeholder="Ссылка на картинку" required />
         <span className="popup__error" id="link-field-error" />
