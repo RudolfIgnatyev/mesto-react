@@ -1,29 +1,12 @@
-// Объект настроек с селекторами и классами формы
-const selectorsAndClassesOfForm = {
-  formSelector: '.popup__container',
-  inputSelector: '.popup__field',
-  submitButtonSelector: '.popup__save-button',
-  inactiveButtonClass: 'popup__save-button_disabled',
-  inputErrorClass: 'popup__field_type_error',
-  errorClass: 'popup__error_visible'
-};
+import { Api } from './api.js';
 
-// Объект настроек с селекторами и классом карточки
-const selectorsAndClassOfCard = {
-  cardImageSelector: '.cards-list__image',
-  cardTitleSelector: '.cards-list__title',
-  cardLikeIconSelector: '.cards-list__like-icon',
-  cardLikeIconActiveClass: 'cards-list__like-icon_active',
-  cardLikeAmountTextSelector: '.cards-list__like-amount-text',
-  cardDeleteIconSelector: '.cards-list__delete-icon',
-  cardDeleteIconHiddenClass: 'cards-list__delete-icon_hidden',
-};
+// Создаём объект api класса Api
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-13',
+  headers: {
+    authorization: 'fec7b8f9-403f-4d91-ad40-57682e4afbf3',
+    'Content-Type': 'application/json'
+  }
+});
 
-// Объект настроек с селекторами и классом карточки
-const selectorsOfProfile = {
-  profileNameSelector: '.profile__title',
-  profileJobSelector: '.profile__subtitle',
-  profileAvatarSelector: '.profile__avatar'
-};
-
-export { selectorsAndClassesOfForm, selectorsAndClassOfCard, selectorsOfProfile };
+export { api };

@@ -2,6 +2,7 @@ import React from 'react';
 import '../index.css';
 
 function PopupWithForm(props) {
+  // Возвращаем JSX-разметку компонента PopupWithForm
   return (
     <section className={`popup popup_type_${props.name} ${props.isOpen ? 'popup_opened' : ''}`}>
       <form className={`popup__container popup__container_type_${props.name}`} name={`popup__container_type_${props.name}`} action="#" method="POST">
