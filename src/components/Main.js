@@ -1,9 +1,8 @@
 import React from 'react';
-import '../index.css';
 import PopupWithForm from './PopupWithForm';
 import Card from './Card';
 import ImagePopup from './ImagePopup';
-import { api } from '../utils/constants.js';
+import { api } from '../utils/utils.js';
 
 function Main(props) {
   // Определяем переменные внутреннего состояния
@@ -63,7 +62,7 @@ function Main(props) {
         </ul>
       </section>
 
-      <PopupWithForm name="profile" title="Редактировать профиль" isOpen={props.isEditProfilePopupOpen ? true : false} onClose={props.onCloseAllPopups}>
+      <PopupWithForm name="profile" title="Редактировать профиль" isOpen={props.isEditProfilePopupOpen} onClose={props.onCloseAllPopups}>
         <input className="popup__field popup__field_el_name" type="text" name="popup__field_el_name" id="name-field" placeholder="Имя" required minLength="2" maxLength="40" />
         <span className="popup__error" id="name-field-error" />
         <input className="popup__field popup__field_el_profession" type="text" name="popup__field_el_profession" id="profession-field" placeholder="Занятие" required minLength="2" maxLength="200" />
@@ -71,7 +70,7 @@ function Main(props) {
         <button className="popup__save-button popup__save-button_type_profile" type="submit">Сохранить</button>
       </PopupWithForm>
 
-      <PopupWithForm name="cards" title="Новое место" isOpen={props.isAddPlacePopupOpen ? true : false} onClose={props.onCloseAllPopups}>
+      <PopupWithForm name="cards" title="Новое место" isOpen={props.isAddPlacePopupOpen} onClose={props.onCloseAllPopups}>
         <input className="popup__field popup__field_el_place" type="text" name="name" id="place-field" placeholder="Название" required minLength="1" maxLength="30" />
         <span className="popup__error" id="place-field-error" />
         <input className="popup__field popup__field_el_link" type="url" name="link" id="link-field" placeholder="Ссылка на картинку" required />
@@ -79,7 +78,7 @@ function Main(props) {
         <button className="popup__save-button popup__save-button_type_cards popup__save-button_disabled" type="submit">Создать</button>
       </PopupWithForm>
 
-      <PopupWithForm name="avatar" title="Обновить аватар" isOpen={props.isEditAvatarPopupOpen ? true : false} onClose={props.onCloseAllPopups}>
+      <PopupWithForm name="avatar" title="Обновить аватар" isOpen={props.isEditAvatarPopupOpen} onClose={props.onCloseAllPopups}>
         <input className="popup__field popup__field_el_avatar" type="url" name="avatar" id="avatar-field" placeholder="Ссылка на картинку" required />
         <span className="popup__error" id="avatar-field-error" />
         <button className="popup__save-button popup__save-button_type_avatar popup__save-button_disabled" type="submit">Сохранить</button>

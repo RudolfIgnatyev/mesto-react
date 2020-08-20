@@ -1,5 +1,4 @@
 import React from 'react';
-import '../index.css';
 
 function PopupWithForm(props) {
   // Возвращаем JSX-разметку компонента PopupWithForm
