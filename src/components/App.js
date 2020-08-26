@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import { api } from '../utils/utils.js';
+import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function App() {
   // Определяем переменные внутреннего состояния
@@ -9,6 +11,18 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState('');
+  const [currentUser, setCurrentUser] = React.useState('');
+
+  React.useEffect(() => {
+    // Загружаем информацию о пользователе
+    api.getUserInfo()
+      .then((initialUserInfo) => {
+        setCurrentUser(initialUserInfo);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, []);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
@@ -40,9 +54,11 @@ function App() {
   // Возвращаем JSX-разметку компонента App
   return (
     <div className="page">
-      <Header />
-      <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} isEditProfilePopupOpen={isEditProfilePopupOpen} isAddPlacePopupOpen={isAddPlacePopupOpen} isEditAvatarPopupOpen={isEditAvatarPopupOpen} selectedCard={selectedCard} onCardImage={handleCardClick} onCloseAllPopups={closeAllPopups} />
-      <Footer />
+      <CurrentUserContext.Provider value={currentUser}>
+        <Header />
+        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} isEditProfilePopupOpen={isEditProfilePopupOpen} isAddPlacePopupOpen={isAddPlacePopupOpen} isEditAvatarPopupOpen={isEditAvatarPopupOpen} selectedCard={selectedCard} onCardImage={handleCardClick} onCloseAllPopups={closeAllPopups} />
+        <Footer />
+      </CurrentUserContext.Provider>
     </div>
   );
 }
