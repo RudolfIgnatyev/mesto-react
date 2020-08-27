@@ -67,19 +67,12 @@ class Api {
       .then(res => this._checkPromise(res));
   }
 
-  // Публичный метод создания пометки понравившейся карточки на сервере
-  putCardLike(cardId) {
-    return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
-      method: 'PUT',
-      headers: this.headers
-    })
-      .then(res => this._checkPromise(res));
-  }
+  // Публичный метод изменения статуса "лайка" карточки на сервере
+  changeLikeCardStatus(cardId, isWillLike) {
+    let currentQueryMethod = isWillLike ? 'PUT' : 'DELETE';
 
-  // Публичный метод удаления пометки понравившейся карточки на сервере
-  deleteCardLike(cardId) {
     return fetch(`${this.baseUrl}/cards/likes/${cardId}`, {
-      method: 'DELETE',
+      method: currentQueryMethod,
       headers: this.headers
     })
       .then(res => this._checkPromise(res));
