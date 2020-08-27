@@ -4,7 +4,7 @@ function PopupWithForm(props) {
   // Возвращаем JSX-разметку компонента PopupWithForm
   return (
     <section className={`popup popup_type_${props.name} ${props.isOpen ? 'popup_opened' : ''}`}>
-      <form className={`popup__container popup__container_type_${props.name}`} name={`popup__container_type_${props.name}`} action="#" method="POST">
+      <form className={`popup__container popup__container_type_${props.name}`} name={`popup__container_type_${props.name}`} action="#" method="POST" onSubmit={props.onSubmit}>
         <h2 className={`popup__title popup__title_type_${props.name}`}>{props.title}</h2>
         {props.children}
       </form>

@@ -37,10 +37,7 @@ class Api {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
-      body: JSON.stringify({
-        name: profileNewInfo.popup__field_el_name,
-        about: profileNewInfo.popup__field_el_profession
-      })
+      body: JSON.stringify(profileNewInfo)
     })
       .then(res => this._checkPromise(res));
   }
