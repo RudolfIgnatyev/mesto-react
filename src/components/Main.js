@@ -8,7 +8,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 function Main(props) {
   // Определяем переменную внутреннего состояния
   const [cards, setCards] = React.useState([]);
-  // Подписываемся на контекст TranslationContext
+  // Подписываемся на контекст CurrentUserContext
   const currentUser = React.useContext(CurrentUserContext);
 
   React.useEffect(() => {
