@@ -140,7 +140,7 @@ function App() {
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Header />
-        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} isAddPlacePopupOpen={isAddPlacePopupOpen} selectedCard={selectedCard} onCardImage={handleCardClick} onCloseAllPopups={closeAllPopups} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
+        <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} selectedCard={selectedCard} onCardImage={handleCardClick} onCloseAllPopups={closeAllPopups} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
         <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} />
