@@ -35,14 +35,6 @@ function Main(props) {
         </ul>
       </section>
 
-      <PopupWithForm name="cards" title="Новое место" isOpen={props.isAddPlacePopupOpen} onClose={props.onCloseAllPopups}>
-        <input className="popup__field popup__field_el_place" type="text" name="name" id="place-field" placeholder="Название" required minLength="1" maxLength="30" />
-        <span className="popup__error" id="place-field-error" />
-        <input className="popup__field popup__field_el_link" type="url" name="link" id="link-field" placeholder="Ссылка на картинку" required />
-        <span className="popup__error" id="link-field-error" />
-        <button className="popup__save-button popup__save-button_type_cards" type="submit">Создать</button>
-      </PopupWithForm>
-
       <PopupWithForm name="card-deletion" title="Вы уверены?">
         <button className="popup__save-button popup__save-button_type_card-deletion" type="submit">Да</button>
       </PopupWithForm>

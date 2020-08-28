@@ -3,6 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
+import AddPlacePopup from './AddPlacePopup';
 import Footer from './Footer';
 import { api } from '../utils/utils.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
@@ -121,6 +122,19 @@ function App() {
       });
   }
 
+  function handleAddPlaceSubmit(inputValueObject) {
+    // Добавляем новую карточку
+    api.postNewCard(inputValueObject)
+      .then((newCardObject) => {
+        // Обновляем стейт расширенной копией текущего массива
+        setCards([...cards, newCardObject]);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
   // Возвращаем JSX-разметку компонента App
   return (
     <div className="page">
@@ -129,6 +143,7 @@ function App() {
         <Main onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onEditAvatar={handleEditAvatarClick} isAddPlacePopupOpen={isAddPlacePopupOpen} selectedCard={selectedCard} onCardImage={handleCardClick} onCloseAllPopups={closeAllPopups} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
         <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />
         <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} />
         <Footer />
       </CurrentUserContext.Provider>
     </div>

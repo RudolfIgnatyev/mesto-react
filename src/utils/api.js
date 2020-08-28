@@ -47,10 +47,7 @@ class Api {
     return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
-      body: JSON.stringify({
-        name: item.name,
-        link: item.link
-      })
+      body: JSON.stringify(item)
     })
       .then(res => this._checkPromise(res));
   }
