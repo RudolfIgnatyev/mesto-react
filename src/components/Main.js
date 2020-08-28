@@ -2,57 +2,11 @@ import React from 'react';
 import PopupWithForm from './PopupWithForm';
 import Card from './Card';
 import ImagePopup from './ImagePopup';
-import { api } from '../utils/utils.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 
 function Main(props) {
-  // Определяем переменную внутреннего состояния
-  const [cards, setCards] = React.useState([]);
   // Подписываемся на контекст CurrentUserContext
   const currentUser = React.useContext(CurrentUserContext);
-
-  React.useEffect(() => {
-    // Загружаем начальные карточки
-    api.getInitialCards()
-      .then((initialCards) => {
-        setCards(initialCards);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
-  function handleCardLike(card) {
-    // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-
-    // Отправляем запрос в API и получаем обновлённые данные карточки
-    api.changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
-        // Формируем новый массив на основе имеющегося, подставляя в него новую карточку
-        const newCards = cards.map((c) => c._id === card._id ? newCard : c);
-        // Обновляем стейт
-        setCards(newCards);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-
-  function handleCardDelete(card) {
-
-    // Отправляем запрос в API, удаляя свою карточку
-    api.deleteCard(card._id)
-      .then(() => {
-        // Формируем новый массив на основе имеющегося, исключая из него удалённую карточку
-        const newCards = cards.filter((c) => c._id != card._id);
-        // Обновляем стейт
-        setCards(newCards);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
 
   // Возвращаем JSX-разметку компонента Main
   return (
@@ -75,8 +29,8 @@ function Main(props) {
 
       <section className="elements">
         <ul className="cards-list">
-          {cards.map(card =>
-            <Card card={card} key={card._id} cardName={card.name} cardLikesLength={card.likes.length} cardLink={card.link} onCardClick={props.onCardImage} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
+          {props.cards.map(card =>
+            <Card card={card} key={card._id} cardName={card.name} cardLikesLength={card.likes.length} cardLink={card.link} onCardClick={props.onCardImage} onCardLike={props.onCardLike} onCardDelete={props.onCardDelete} />
           )}
         </ul>
       </section>
