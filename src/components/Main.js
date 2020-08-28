@@ -86,13 +86,7 @@ function Main(props) {
         <span className="popup__error" id="place-field-error" />
         <input className="popup__field popup__field_el_link" type="url" name="link" id="link-field" placeholder="Ссылка на картинку" required />
         <span className="popup__error" id="link-field-error" />
-        <button className="popup__save-button popup__save-button_type_cards popup__save-button_disabled" type="submit">Создать</button>
-      </PopupWithForm>
-
-      <PopupWithForm name="avatar" title="Обновить аватар" isOpen={props.isEditAvatarPopupOpen} onClose={props.onCloseAllPopups}>
-        <input className="popup__field popup__field_el_avatar" type="url" name="avatar" id="avatar-field" placeholder="Ссылка на картинку" required />
-        <span className="popup__error" id="avatar-field-error" />
-        <button className="popup__save-button popup__save-button_type_avatar popup__save-button_disabled" type="submit">Сохранить</button>
+        <button className="popup__save-button popup__save-button_type_cards" type="submit">Создать</button>
       </PopupWithForm>
 
       <PopupWithForm name="card-deletion" title="Вы уверены?">

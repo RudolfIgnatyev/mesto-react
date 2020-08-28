@@ -31,7 +31,7 @@ function EditProfilePopup(props) {
       name,
       about: description,
     }
-    // Передаём объект со значениями управляемых компонентов во внешний обработчик
+    // Передаём объект inputListValuesObject со значениями управляемых компонентов во внешний обработчик
     props.onUpdateUser(inputListValuesObject);
   }
 
